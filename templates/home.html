@@ -1,0 +1,70 @@
+{% load static %}
+<! DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COLLEGE STORE</title>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <meta name="description" content="{% block metadescription %}{% endblock %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">College Store</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'collegestore_app:logout' %}">Logout</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+
+        <a class="nav-link" href="{% url 'collegestore_app:login' %}">Login</a>
+      </li>
+
+      <li class="nav-item">
+
+        <a class="nav-link" href="{% url 'collegestore_app:register' %}">Register</a>
+      </li>
+
+<!--      <li class="nav-item dropdown {% if 'collegestore_app' in request.path %} active {% endif %}">-->
+<!--          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--         Department-->
+<!--          </a>-->
+<!--          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--              <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Computer_science">ComputerScience</a></li>-->
+<!--          </ul>-->
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Department
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Computer_science">ComputerScience</a>
+          <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Computer_science">Civil</a>
+          <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Computer_science">Mechanical</a>
+          <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Computer_science">Electronics</a>
+          <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Computer_science">Electrical</a>
+        </div>
+
+
+      </li>
+
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+</body>
+</html>
+{% block content %}
+
+{% endblock %}
+
